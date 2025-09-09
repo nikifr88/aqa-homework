@@ -1,6 +1,6 @@
 function handleNum(n, evenFunc, oddFunc) {
-    if(n % 2 === 0) return evenFunc();
-    return oddFunc();
+	if (n % 2 === 0) return evenFunc();
+	return oddFunc();
 }
 
 const handelEven = () => console.log('number is even');
