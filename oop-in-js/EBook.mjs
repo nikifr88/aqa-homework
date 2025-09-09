@@ -1,35 +1,40 @@
 import Book from "./Book.mjs";
 
 export default class EBook extends Book {
-    constructor(name, author, yearOfRelease, fileExtension){
-        super(name, author, yearOfRelease)
-        this._fileExtension = fileExtension;
-    }
+  constructor(name, author, yearOfRelease, fileExtension) {
+    super(name, author, yearOfRelease)
+    this._fileExtension = fileExtension;
+  }
 
-    static correctExt = ['epub', 'pdf', 'fb2', 'mobi', 'doc', 'docx', 'txt'];
+  static correctExt = ["epub", "pdf", "fb2", "mobi", "doc", "docx", "txt"];
 
-    static convertInEbook(book, ext) {
+  static convertInEbook(book, ext) {
 
-        if(!EBook.correctExt.includes(ext.toLowerCase())) return console.log(`Передано не существующее расширение для файла ${ext}`);
+    if (!EBook.correctExt.includes(ext.toLowerCase())) return console.log(`Передано не существующее расширение для файла ${ext}`);
 
-        const {name, author, yearOfRelease} = book;
+    const {
+      name,
+      author,
+      yearOfRelease
+    } = book;
 
-        const newEBook = new EBook(name, author, yearOfRelease, ext);
-        
-        return newEBook;
-    }
+    const newEBook = new EBook(name, author, yearOfRelease, ext);
 
-    get fileExtension() {
-        return this._fileExtension;
-    }
+    return newEBook;
+  }
 
-    set fileExtension(value) {
-        if(!EBook.correctExt.includes(value.toLowerCase())) return console.log(`Передано не существующее расширение для файла ${value}`);
+  get fileExtension() {
+    return this._fileExtension;
+  }
 
-        this._fileExtension = value
-    }
+  set fileExtension(value) {
+    // eslint-disable-next-line no-setter-return
+    if (!EBook.correctExt.includes(value.toLowerCase())) return console.log(`Передано не существующее расширение для файла ${value}`);
 
-    printInfo(){
-        console.log(`Название книги: ${this._name}, автор книги: ${this._author}, год издания: ${this._yearOfRelease}, расширение файла: ${this._fileExtension}`)
-    }
+    this._fileExtension = value
+  }
+
+  printInfo() {
+    console.log(`Название книги: ${this._name}, автор книги: ${this._author}, год издания: ${this._yearOfRelease}, расширение файла: ${this._fileExtension}`)
+  }
 }
