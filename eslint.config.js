@@ -12,7 +12,10 @@ export default defineConfig([{
   },
   extends: [js.configs.recommended, prettier],
   languageOptions: {
-    globals: globals.browser,
+    globals: {
+      ...globals.browser,
+      ...globals.jest
+    },
   },
   rules: {
     indent: [
@@ -30,6 +33,10 @@ export default defineConfig([{
         allowTemplateLiterals: true,
       },
     ],
+    env: {
+      node: true,
+      jest: true
+    },
     "arrow-parens": ["error", "always"],
   },
 }, ]);
